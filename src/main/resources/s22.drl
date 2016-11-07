@@ -1,0 +1,96 @@
+//**************************************
+import ru.roskazna.eb.domain.acr_0531722.formular.*;
+import com.av.utils.CustomSource;
+global CustomSource customSource;
+import  com.av.domain.Transaction;
+dialect  "mvel"
+
+rule dummy
+agenda-group "CODE_1"
+ when eval(1==2)
+ then
+System.out.println("dummy" );
+
+end
+
+
+rule "Проводки на БА 1 год"
+agenda-group "CODE_1"
+ when
+ $h :ACR0531722()
+$l : TS1S1722ITEM  (
+($l.section == "БА")
+ ) from $h.FS_S1_S1_722_LIST
+then
+//System.out.println("Проводки на БА 1 год" );
+Transaction tr = new Transaction();
+tr.setsD1($l.BCC);
+tr.setsC1($l.BCC);
+tr.setsD2("1");
+
+tr.setsC2($h.FUND_SOURCE_CODE);
+ if ( ($l.BCC == $l.BCC)) {
+tr.setsD3("50311");
+}
+ if ( ($l.BCC == $l.BCC)) {
+tr.setsC3("50311");
+}
+
+//System.out.println( tr );
+insert(tr);
+end
+rule "Проводки на ЛБО 1 год"
+agenda-group "CODE_1"
+ when
+ $h :ACR0531722()
+$l : TS1S1722ITEM  (($l.section == "ЛБО")  && ($l.BCC == $l.BCC  && customSource.substr($l.BCC , 0 , 17) != null )  && ($l.BCC != null ) ) from $h.FS_S1_S1_722_LIST
+then
+//System.out.println("Проводки на ЛБО 1 год" );
+Transaction tr = new Transaction();
+tr.setsD1($l.BCC);
+tr.setsC1($l.BCC);
+tr.setsD2($h.FUND_SOURCE_CODE);
+tr.setsC2($h.FUND_SOURCE_CODE);
+ if ( ($l.section == "ЛБО")) {
+tr.setsD3("50115");
+}
+ if ( ($l.section == "ЛБО")) {
+tr.setsC3("50115");
+}
+
+tr.setDocParentId($h.docID);
+
+//System.out.println( tr );
+insert(tr);
+end
+rule "Проводки по ПОФР"
+agenda-group "CODE_1"
+ when
+ $h :ACR0531722()
+$l : TS1S1722ITEM  ($l.section == "ПОФР" ) from $h.FS_S1_S1_722_LIST
+then
+//System.out.println("Проводки по ПОФР" );
+Transaction tr = new Transaction();
+tr.setsD1($l.BCC);
+tr.setsC1($l.BCC);
+tr.setsD2("1");
+tr.setsC2($h.FUND_SOURCE_CODE);
+ if ( (customSource.substr($l.BCC , 0 , 17) == "10000000000000000")) {
+tr.setsD3("ПОФР");
+ } else if ( ($l.BCC == $l.BCC)) {
+tr.setsD3("eertererer");
+ } else if( $l.section == $l.section) {
+tr.setsD3("99999");
+}
+ if ( (customSource.substr($l.BCC , 0 , 17) == "10000000000000000")) {
+tr.setsC3("ПОФР");
+ } else if ( ($l.BCC == $l.BCC)) {
+tr.setsC3("eertererer");
+ } else if ( $l.section == $l.section) {
+tr.setsC3("99999");
+}
+
+//System.out.println( tr );
+insert(tr);
+end
+//**************************************

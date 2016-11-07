@@ -1,0 +1,44 @@
+import ru.roskazna.eb.domain.acr_0531722.formular.*;
+import com.av.utils.CustomSource;
+global CustomSource customSource;
+ dialect  "mvel"
+
+rule "dummy"
+
+when
+eval(1==2)
+then
+customSource.substr("" , 0 , 17);
+end;
+
+rule "dummy start"
+when
+eval(1==1)
+then
+System.out.print("Start");
+end;
+
+rule "Проводки на БА 1 год"
+ when
+ $h :ACR0531722()
+$l : TS1S1722ITEM  ((section == "БА") ) from $h.FS_S1_S1_722_LIST
+then
+System.out.println("Проводки на БА 1 год" );
+end
+
+rule "Проводки на ЛБО 1 год"
+ when
+ $h :ACR0531722()
+$l : TS1S1722ITEM  (((BCC == "12345678901234567890")  && ($h.FUND_SOURCE_CODE == "10")
+ && customSource.substr(BCC , 0 , 17) != null )  && (BCC != null ) ) from $h.FS_S1_S1_722_LIST
+then
+System.out.println("Проводки на ЛБО 1 год" );
+end
+
+rule "Проводки по ПОФР"
+ when
+ $h :ACR0531722()
+$l : TS1S1722ITEM  (section == "ПОФР" ) from $h.FS_S1_S1_722_LIST
+then
+System.out.println("Проводки по ПОФР" );
+end
