@@ -21,7 +21,7 @@ import java.util.List;
 public class CustomRuleDao {
     @Autowired
     private NamedParameterJdbcTemplate template;
-@Autowired
+    @Autowired
     private DocumentDAO documentDAO;
 
     private static final String FIND_ALL_CUSTOM_RULES = "SELECT  cr.rule_id , av.type, av.code as  rule_code , av.name as rule_name , cr.API_CODE ," +
@@ -94,7 +94,7 @@ public class CustomRuleDao {
 
                     if (!resultSet.wasNull() && resultSet.getLong("attribute_code_id") > 0) {
 
-                     param.setAttr(documentDAO.findAttrById(resultSet.getLong("attribute_code_id")));
+                        param.setAttr(documentDAO.findAttrById(resultSet.getLong("attribute_code_id")));
 
                     }
 
