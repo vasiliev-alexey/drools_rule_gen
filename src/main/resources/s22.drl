@@ -1,5 +1,5 @@
 //**************************************
-import ru.roskazna.eb.domain.acr_0531722.formular.*;
+import test.formular.*;
 import com.av.utils.CustomSource;
 global CustomSource customSource;
 import  com.av.domain.Transaction;
