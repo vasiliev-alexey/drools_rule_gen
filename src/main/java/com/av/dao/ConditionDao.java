@@ -116,8 +116,8 @@ public class ConditionDao {
 
     public void deleteConditionByGroupRuleID(long groupRuleID) {
 
-            HashMap<String , Long> p = new HashMap<String, Long>();
-        p.put("GROUP_RULE_ID" , groupRuleID);
+        HashMap<String, Long> p = new HashMap<String, Long>();
+        p.put("GROUP_RULE_ID", groupRuleID);
 
         template.update("delete from CONDITION_LINE  where condition_id in ( " +
                 "select gr.CONDITION_id from   GROUP_RULE_ITEM gr" +
@@ -125,7 +125,7 @@ public class ConditionDao {
 
         template.update("delete from CONDITION   where condition_id in ( " +
                 "select gr.CONDITION_id from   GROUP_RULE_ITEM gr" +
-                " where gr.GROUP_RULE_ID = :GROUP_RULE_ID )" , p);
+                " where gr.GROUP_RULE_ID = :GROUP_RULE_ID )", p);
 
     }
 
@@ -162,11 +162,11 @@ public class ConditionDao {
 
 
                         if ("CONSTANT".equals(av.getType()))
-                            line.setLeftObjectType("Константа");
+                            line.setLeftObjectType("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
                         else if ("ATTRIBUTE".equals(av.getType())) {
-                            line.setLeftObjectType("Атрибут документа");
+                            line.setLeftObjectType("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
                         } else if ("SOURCE".equals(av.getType())) {
-                            line.setLeftObjectType("Источник");
+                            line.setLeftObjectType("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
                         }
                     }
 
@@ -178,11 +178,11 @@ public class ConditionDao {
 
 
                         if ("CONSTANT".equals(av.getType()))
-                            line.setRightObjectType("Константа");
+                            line.setRightObjectType("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
                         else if ("ATTRIBUTE".equals(av.getType())) {
-                            line.setRightObjectType("Атрибут документа");
+                            line.setRightObjectType("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
                         } else if ("SOURCE".equals(av.getType())) {
-                            line.setRightObjectType("Источник");
+                            line.setRightObjectType("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
                         }
                     }
 
