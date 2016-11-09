@@ -58,15 +58,15 @@ public class DocumentAttributeTableModel extends AbstractTableModel {
     public String getColumnName(int column) {
         switch (column) {
             case CODE:
-                return "РљРѕРґ РґРѕРєСѓРјРµРЅС‚Р°";
+                return "Код документа";
             case NAME:
-                return "РќР°РёРјРµРЅРѕРІР°РЅРёРµ РґРѕРєСѓРјРµРЅС‚Р°";
+                return "Наименование документа";
             case PATH:
-                return "РџСѓС‚СЊ РґРѕСЃС‚СѓРїР°";
+                return "Путь доступа";
             case FIELD_CLASS:
-                return "РљР»Р°СЃСЃ Р°С‚СЂРёР±СѓС‚Р°";
+                return "Класс атрибута";
             case FIELD_CODE:
-                return "РљРѕРґ РєР»Р°СЃСЃР°";
+                return "Код класса";
         }
 
         return null;

@@ -32,7 +32,7 @@ public class EventFrame extends JFrame {
     public void init() {
 
         setMinimumSize(new Dimension(1000, 700));
-        setTitle("РЎРѕР±С‹С‚РёСЏ РїРѕ РґРѕРєСѓРјРµРЅС‚Р°Рј");
+        setTitle("События по документам");
         setLayout(new BorderLayout());
         JPanel panel = new JPanel();
         add(panel);
@@ -57,7 +57,7 @@ public class EventFrame extends JFrame {
 
         JPanel mngPanel = new JPanel();
         add(mngPanel, BorderLayout.NORTH);
-        JButton btAdd = new JButton("Р”РѕР±Р°РІРёС‚СЊ СЃРѕР±С‹С‚РёРµ");
+        JButton btAdd = new JButton("Добавить событие");
         mngPanel.add(btAdd);
         btAdd.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -66,7 +66,7 @@ public class EventFrame extends JFrame {
             }
         });
 
-        JButton btSave = new JButton("РЎРѕС…СЂР°РЅРёС‚СЊ");
+        JButton btSave = new JButton("Сохранить");
         mngPanel.add(btSave);
         btSave.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -74,7 +74,7 @@ public class EventFrame extends JFrame {
             }
         });
 
-        // С‚СѓС‚ Р±СѓРґСѓС‚ СЃС‚СЂСѓРєС‚СѓСЂС‹ РґРѕРєСѓРјРµРЅС‚РѕРІ
+        // тут будут структуры документов
 
 
     }

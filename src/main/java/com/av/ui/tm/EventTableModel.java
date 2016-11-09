@@ -59,13 +59,13 @@ public class EventTableModel extends AbstractTableModel {
     public String getColumnName(int column) {
         switch (column) {
             case CODE:
-                return "РљРѕРґ СЃРѕР±С‹С‚РёСЏ";
+                return "Код события";
             case NAME:
-                return "РќР°РёРјРµРЅРѕРІР°РЅРёРµ СЃРѕР±С‹С‚РёСЏ";
+                return "Наименование события";
             case DOC:
-                return "Р”РѕРєСѓРјРµРЅС‚ РґР»СЏ СЃРѕР±С‹С‚РёСЏ";
+                return "Документ для события";
             case ENABLED:
-                return "РђРєС‚РёРІРЅРѕ";
+                return "Активно";
         }
         return null;
     }

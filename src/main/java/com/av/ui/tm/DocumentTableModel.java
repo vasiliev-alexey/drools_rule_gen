@@ -51,9 +51,9 @@ public class DocumentTableModel extends AbstractTableModel {
     public String getColumnName(int column) {
         switch (column) {
             case CODE:
-                return "РљРѕРґ РґРѕРєСѓРјРµРЅС‚Р°";
+                return "Код документа";
             case NAME:
-                return "РќР°РёРјРµРЅРѕРІР°РЅРёРµ РґРѕРєСѓРјРµРЅС‚Р°";
+                return "Наименование документа";
         }
 
         return null;
