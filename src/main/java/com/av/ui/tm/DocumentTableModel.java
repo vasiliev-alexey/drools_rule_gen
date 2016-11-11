@@ -13,6 +13,7 @@ public class DocumentTableModel extends AbstractTableModel {
     private static final int COLUMN_COUNT = 3;
     private static final int CODE = 0;
     private static final int NAME = 1;
+    private  static final  int PACKAGE = 2;
 
 
     private List<Document> listDoc;
@@ -42,6 +43,8 @@ public class DocumentTableModel extends AbstractTableModel {
                 return listDoc.get(rowIndex).getCode();
             case NAME:
                 return listDoc.get(rowIndex).getName();
+            case PACKAGE:
+                return  listDoc.get(rowIndex).getPackagePath();
         }
 
         return null;
@@ -54,6 +57,8 @@ public class DocumentTableModel extends AbstractTableModel {
                 return "Код документа";
             case NAME:
                 return "Наименование документа";
+            case PACKAGE:
+                return  "Пакет";
         }
 
         return null;

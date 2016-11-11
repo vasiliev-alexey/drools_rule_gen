@@ -2,6 +2,7 @@ package com.av.dao;
 
 import com.av.domain.Document;
 import com.av.domain.DocumentAttribute;
+import com.av.domain.DocumentStructure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
@@ -23,6 +24,9 @@ import java.util.List;
 public class DocumentDAO {
     @Autowired
     NamedParameterJdbcTemplate template;
+
+    @Autowired
+    DocumentStructDAO documentStructDAO;
 
 
     private static final String FIND_ALL = "select doc.doc_id , doc.code , doc.name ,\n" +
@@ -105,10 +109,15 @@ return null;
                     doc.setDocumentAttributeList(new ArrayList<DocumentAttribute>());
                     listDoc.add(doc);
 
+                    //   doc.setPackagePath(ds.getPackageName());
+
+                    doc.setId(resultSet.getLong("DOC_ID"));
+                    doc.setCode(resultSet.getString("CODE"));
+                    doc.setName(resultSet.getString("NAME"));
+                  //  DocumentStructure  ds = documentStructDAO.getDocMetaData(doc.getId()).get("HEADER");
                 }
-                doc.setId(resultSet.getLong("DOC_ID"));
-                doc.setCode(resultSet.getString("CODE"));
-                doc.setName(resultSet.getString("NAME"));
+
+
 
 
                 map.put(doc.getId(), doc);

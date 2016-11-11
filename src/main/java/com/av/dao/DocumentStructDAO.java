@@ -49,7 +49,7 @@ public class DocumentStructDAO {
                 ds.setId(resultSet.getInt("struct_id"));
                 ds.setLevelCode(resultSet.getInt("level_code"));
                 ds.setNode(resultSet.getString("node"));
-                ds.setPackageName(resultSet.getString("PACKAGE_NAME"));
+                ds.setPackageName(resultSet.getString("package_name"));
                 ds.setPath(resultSet.getString("path"));
 
                 hds.put(ds.getPath() , ds);
